@@ -10,17 +10,16 @@
             $credential = json_decode(fread($myfile,filesize("data.json")));
             if($data['username'] == $credential->username && ($data['password']) == $credential->password){
                 $_SESSION["username"] = $data['username'];
-                header('Location:loginact.php');
+                header('Location:pageafterlogin.php');
             }else{
                 echo"Login Gagal <br><br><a href='logout.php'>Kembali</a> ";
             }
             fclose($myfile);
         }else{
-            echo "Email dan password Kosong";
+            echo "username atau masih password kosong";
         }
     }else{
-        echo "Selamat Sudah Berhasil Login, ".$_SESSION["username"].
-        "<br><br><a href='logout.php'>Log Out</a>" ;
+        header('location: welcome.php');
     }
 ?>
 
